@@ -89,3 +89,19 @@ function createCounter(init) {
 // The returned array should be created such that returnedArray[i] = fn(arr[i], i).
 
 // Please solve it without the built-in Array.map method.
+
+let map = function(arr, fn) {
+    let result = []
+
+    for(let i = 0; i< arr.length; i++) {
+        result.push(fn(arr[i], i))
+    }
+
+    return result
+}
+
+let newArray = [1,2,3,4,5]
+let newFunction = (val, index) => val * 10 + index
+
+let transformedArray = map(newArray, newFunction)
+console.log(transformedArray)
