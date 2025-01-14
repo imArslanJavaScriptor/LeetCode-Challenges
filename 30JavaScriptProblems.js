@@ -116,17 +116,41 @@ console.log(transformedArray)
 
 // Please solve it without the built-in Array.filter method.
 
-function filterArray(arr, fn) {
-    const filteredArr = []; // Initialize an empty array to store the results.
-    for (let i = 0; i < arr.length; i++) { // Iterate over the array.
-        if (fn(arr[i], i)) { // Call the fn function with arr[i] and i.
-            filteredArr.push(arr[i]); // If truthy, add arr[i] to filteredArr.
-        }
-    }
-    return filteredArr; // Return the result.
-}
-const arr = [1, 2, 3, 4];
-const fn = (value) => value % 2 === 0; // Filter even numbers.
+// function filterArray(arr, fn) {
+//     const filteredArr = []; // Initialize an empty array to store the results.
+//     for (let i = 0; i < arr.length; i++) { // Iterate over the array.
+//         if (fn(arr[i], i)) { // Call the fn function with arr[i] and i.
+//             filteredArr.push(arr[i]); // If truthy, add arr[i] to filteredArr.
+//         }
+//     }
+//     return filteredArr; // Return the result.
+// }
+// const arr = [1, 2, 3, 4];
+// const fn = (value) => value % 2 === 0; // Filter even numbers.
 
-let result = filterArray(arr, fn)
-console.log(result)
+// let result = filterArray(arr, fn)
+// console.log(result)
+
+//Q#7: Given an integer array nums, a reducer function fn, and an initial value init, return the final result obtained by executing the fn function on each element of the array, sequentially, passing in the return value from the calculation on the preceding element.
+
+// This result is achieved through the following operations: val = fn(init, nums[0]), val = fn(val, nums[1]), val = fn(val, nums[2]), ... until every element in the array has been processed. The ultimate value of val is then returned.
+
+// If the length of the array is 0, the function should return init.
+
+// Please solve it without using the built-in Array.reduce method.
+
+var reduce = function(nums, fn, init) {
+  let val = init
+  for(let i = 0; i < nums.length; i++)  {
+    val = fn(val, nums[i])
+  } 
+  return val
+};
+
+// let numArr = [1,2,3,4,5]
+let numArr = []
+let reducerFunc = (acc,curr) => acc + curr;
+let initialVlaue = 10
+
+let finalRes = reduce(numArr, reducerFunc, initialVlaue)
+console.log(finalRes)
